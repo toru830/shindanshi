@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>診断士過去問アプリ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- ヘッダー -->
+        <header class="header">
+            <h1>診断士過去問</h1>
+            <div class="progress-info">
+                <span id="current-question">1</span> / <span id="total-questions">10</span>
+            </div>
+            <div class="subject-filter">
+                <select id="subject-select">
+                    <option value="all">全科目</option>
+                    <option value="経済学">経済学</option>
+                    <option value="経営学">経営学</option>
+                    <option value="財務・会計">財務・会計</option>
+                    <option value="運営管理">運営管理</option>
+                    <option value="企業経営理論">企業経営理論</option>
+                    <option value="経営情報システム">経営情報システム</option>
+                    <option value="中小企業経営・政策">中小企業経営・政策</option>
+                </select>
+            </div>
+        </header>
+
+        <!-- メインコンテンツ -->
+        <main class="main-content">
+            <!-- 問題表示エリア -->
+            <div class="question-container" id="question-container">
+                <div class="question-header">
+                    <span class="question-number">問題 <span id="question-num">1</span></span>
+                    <span class="question-year">2023年</span>
+                    <span class="question-subject" id="question-subject">経済学</span>
+                </div>
+                <div class="question-text" id="question-text">
+                    問題文がここに表示されます。
+                </div>
+                <div class="question-image" id="question-image" style="display: none;">
+                    <img src="" alt="問題図表" id="question-img">
+                </div>
+            </div>
+
+            <!-- 選択肢エリア -->
+            <div class="options-container" id="options-container">
+                <div class="option" data-option="1">
+                    <span class="option-label">ア</span>
+                    <span class="option-text">選択肢1</span>
+                </div>
+                <div class="option" data-option="2">
+                    <span class="option-label">イ</span>
+                    <span class="option-text">選択肢2</span>
+                </div>
+                <div class="option" data-option="3">
+                    <span class="option-label">ウ</span>
+                    <span class="option-text">選択肢3</span>
+                </div>
+                <div class="option" data-option="4">
+                    <span class="option-label">エ</span>
+                    <span class="option-text">選択肢4</span>
+                </div>
+                <div class="option" data-option="5">
+                    <span class="option-label">オ</span>
+                    <span class="option-text">選択肢5</span>
+                </div>
+            </div>
+
+            <!-- 解答・解説エリア -->
+            <div class="answer-container" id="answer-container" style="display: none;">
+                <div class="answer-header">
+                    <h3>正解</h3>
+                    <span class="correct-answer" id="correct-answer">ア</span>
+                </div>
+                <div class="explanation" id="explanation">
+                    解説がここに表示されます。
+                </div>
+            </div>
+        </main>
+
+        <!-- フッター（ボタンエリア） -->
+        <footer class="footer">
+            <button class="btn btn-secondary" id="prev-btn" disabled>前の問題</button>
+            <button class="btn btn-primary" id="next-btn">次の問題</button>
+            <button class="btn btn-success" id="answer-btn" style="display: none;">解答を見る</button>
+            <button class="btn btn-primary" id="continue-btn" style="display: none;">続ける</button>
+        </footer>
+
+        <!-- 結果表示モーダル -->
+        <div class="modal" id="result-modal" style="display: none;">
+            <div class="modal-content">
+                <h2>結果</h2>
+                <div class="score-display">
+                    <span class="score">正解数: <span id="correct-count">0</span> / <span id="total-count">10</span></span>
+                    <span class="percentage">正答率: <span id="percentage">0</span>%</span>
+                </div>
+                <div class="modal-buttons">
+                    <button class="btn btn-primary" id="restart-btn">もう一度</button>
+                    <button class="btn btn-secondary" id="close-modal-btn">閉じる</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
