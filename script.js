@@ -9,6 +9,9 @@ class DiagnosisApp {
         this.isAnswered = false;
         this.showAnswer = false;
         this.selectedSubject = 'all';
+        this.selectedYear = '';
+        this.selectedCoverSubject = '';
+        this.selectedCoverYear = '';
         
         this.initializeApp();
     }
@@ -18,6 +21,7 @@ class DiagnosisApp {
         await this.loadQuestions();
         this.filterQuestions(); // 初期フィルタリング
         this.setupEventListeners();
+        this.showCoverScreen(); // 表紙画面を表示
     }
 
     // 過去問データの読み込み
@@ -80,6 +84,18 @@ class DiagnosisApp {
 
     // イベントリスナーの設定
     setupEventListeners() {
+        // 表紙画面のイベント
+        document.querySelectorAll('.subject-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => this.selectCoverSubject(e.target.dataset.subject));
+        });
+        
+        document.querySelectorAll('.year-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => this.selectCoverYear(e.target.dataset.year));
+        });
+        
+        document.getElementById('start-quiz').addEventListener('click', () => this.startQuiz());
+        document.getElementById('back-to-cover').addEventListener('click', () => this.showCoverScreen());
+
         // 選択肢クリック
         document.getElementById('options-container').addEventListener('click', (e) => {
             const option = e.target.closest('.option');
@@ -101,6 +117,53 @@ class DiagnosisApp {
         document.getElementById('continue-btn').addEventListener('click', () => this.continueToNext());
         document.getElementById('restart-btn').addEventListener('click', () => this.restartQuiz());
         document.getElementById('close-modal-btn').addEventListener('click', () => this.closeModal());
+    }
+
+    // 表紙画面の表示
+    showCoverScreen() {
+        document.getElementById('cover-screen').style.display = 'flex';
+        document.getElementById('question-screen').style.display = 'none';
+    }
+
+    // 科目選択
+    selectCoverSubject(subject) {
+        this.selectedCoverSubject = subject;
+        
+        // ボタンの選択状態を更新
+        document.querySelectorAll('.subject-btn').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+        document.querySelector(`[data-subject="${subject}"]`).classList.add('selected');
+        
+        // 年度選択を表示
+        document.getElementById('year-selection').style.display = 'block';
+    }
+
+    // 年度選択
+    selectCoverYear(year) {
+        this.selectedCoverYear = year;
+        
+        // ボタンの選択状態を更新
+        document.querySelectorAll('.year-btn').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+        document.querySelector(`[data-year="${year}"]`).classList.add('selected');
+        
+        // 開始ボタンを表示
+        document.getElementById('start-button').style.display = 'block';
+        document.getElementById('start-quiz').disabled = false;
+    }
+
+    // クイズ開始
+    startQuiz() {
+        // 表紙画面を非表示、問題画面を表示
+        document.getElementById('cover-screen').style.display = 'none';
+        document.getElementById('question-screen').style.display = 'block';
+        
+        // 選択された科目と年度でフィルタリング
+        this.selectedSubject = this.selectedCoverSubject;
+        this.selectedYear = this.selectedCoverYear;
+        this.filterQuestions();
     }
 
     // 選択肢の選択

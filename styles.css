@@ -8,11 +8,139 @@
 /* 基本設定 */
 body {
     font-family: 'Noto Sans JP', sans-serif;
-    background-color: #f5f5f5;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
     color: #333;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* 表紙画面 */
+.cover-screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.cover-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.cover-header h1 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.cover-header h2 {
+    font-size: 1.5rem;
+    color: #f0f0f0;
+    font-weight: 300;
+}
+
+.subject-selection, .year-selection {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.subject-selection h3, .year-selection h3 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.subject-buttons, .year-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    max-width: 600px;
+}
+
+.subject-btn, .year-btn {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 10px;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    min-width: 120px;
+}
+
+.subject-btn:hover, .year-btn:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.subject-btn.selected, .year-btn.selected {
+    background: #4CAF50;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76,175,80,0.4);
+}
+
+.start-button {
+    text-align: center;
+}
+
+.start-btn {
+    background: #FF6B6B;
+    border: none;
+    border-radius: 15px;
+    padding: 20px 40px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(255,107,107,0.3);
+}
+
+.start-btn:hover {
+    background: #FF5252;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255,107,107,0.4);
+}
+
+.start-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 問題画面 */
+.question-screen {
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.back-to-cover-btn {
+    background: #6c757d;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
+
+.back-to-cover-btn:hover {
+    background: #5a6268;
+    transform: translateY(-1px);
 }
 
 .app-container {
