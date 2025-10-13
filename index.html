@@ -12,35 +12,75 @@
     <div class="app-container">
         <!-- 表紙画面 -->
         <div class="cover-screen" id="cover-screen">
-            <div class="cover-header">
-                <h1>中小企業診断士</h1>
-                <h2>過去問アプリ</h2>
-            </div>
-            
-            <div class="subject-selection">
-                <h3>科目を選択してください</h3>
-                <div class="subject-buttons">
-                    <button class="subject-btn" data-subject="経済学">経済学</button>
-                    <button class="subject-btn" data-subject="財務会計">財務会計</button>
-                    <button class="subject-btn" data-subject="法務">法務</button>
+            <div class="cover-container">
+                <div class="cover-header">
+                    <h1>中小企業診断士</h1>
+                    <h2>過去問アプリ</h2>
                 </div>
-            </div>
-            
-            <div class="year-selection" id="year-selection" style="display: none;">
-                <h3>年度を選択してください</h3>
-                <div class="year-buttons">
-                    <button class="year-btn" data-year="令和1">令和1年</button>
-                    <button class="year-btn" data-year="令和2">令和2年</button>
-                    <button class="year-btn" data-year="令和3">令和3年</button>
-                    <button class="year-btn" data-year="令和4">令和4年</button>
-                    <button class="year-btn" data-year="令和5">令和5年</button>
-                    <button class="year-btn" data-year="令和6">令和6年</button>
-                    <button class="year-btn" data-year="令和7">令和7年</button>
+                
+                <div class="selection-grid">
+                    <div class="subject-section">
+                        <h3>科目を選択</h3>
+                        <div class="subject-cards">
+                            <div class="subject-card" data-subject="経済学">
+                                <div class="card-icon">📊</div>
+                                <div class="card-title">経済学</div>
+                                <div class="card-subtitle">Economics</div>
+                            </div>
+                            <div class="subject-card" data-subject="財務会計">
+                                <div class="card-icon">💰</div>
+                                <div class="card-title">財務会計</div>
+                                <div class="card-subtitle">Finance & Accounting</div>
+                            </div>
+                            <div class="subject-card" data-subject="法務">
+                                <div class="card-icon">⚖️</div>
+                                <div class="card-title">法務</div>
+                                <div class="card-subtitle">Legal Affairs</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="year-section">
+                        <h3>年度を選択</h3>
+                        <div class="year-grid">
+                            <div class="year-card" data-year="令和1">
+                                <div class="year-number">R1</div>
+                                <div class="year-text">令和1年</div>
+                            </div>
+                            <div class="year-card" data-year="令和2">
+                                <div class="year-number">R2</div>
+                                <div class="year-text">令和2年</div>
+                            </div>
+                            <div class="year-card" data-year="令和3">
+                                <div class="year-number">R3</div>
+                                <div class="year-text">令和3年</div>
+                            </div>
+                            <div class="year-card" data-year="令和4">
+                                <div class="year-number">R4</div>
+                                <div class="year-text">令和4年</div>
+                            </div>
+                            <div class="year-card" data-year="令和5">
+                                <div class="year-number">R5</div>
+                                <div class="year-text">令和5年</div>
+                            </div>
+                            <div class="year-card" data-year="令和6">
+                                <div class="year-number">R6</div>
+                                <div class="year-text">令和6年</div>
+                            </div>
+                            <div class="year-card" data-year="令和7">
+                                <div class="year-number">R7</div>
+                                <div class="year-text">令和7年</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="start-button" id="start-button" style="display: none;">
-                <button class="start-btn" id="start-quiz">問題を開始する</button>
+                
+                <div class="start-section">
+                    <button class="start-btn" id="start-quiz" disabled>
+                        <span class="btn-icon">🚀</span>
+                        <span class="btn-text">問題を開始する</span>
+                    </button>
+                </div>
             </div>
         </div>
 

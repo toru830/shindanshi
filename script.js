@@ -85,12 +85,12 @@ class DiagnosisApp {
     // イベントリスナーの設定
     setupEventListeners() {
         // 表紙画面のイベント
-        document.querySelectorAll('.subject-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => this.selectCoverSubject(e.target.dataset.subject));
+        document.querySelectorAll('.subject-card').forEach(card => {
+            card.addEventListener('click', (e) => this.selectCoverSubject(e.currentTarget.dataset.subject));
         });
         
-        document.querySelectorAll('.year-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => this.selectCoverYear(e.target.dataset.year));
+        document.querySelectorAll('.year-card').forEach(card => {
+            card.addEventListener('click', (e) => this.selectCoverYear(e.currentTarget.dataset.year));
         });
         
         document.getElementById('start-quiz').addEventListener('click', () => this.startQuiz());
@@ -129,29 +129,38 @@ class DiagnosisApp {
     selectCoverSubject(subject) {
         this.selectedCoverSubject = subject;
         
-        // ボタンの選択状態を更新
-        document.querySelectorAll('.subject-btn').forEach(btn => {
-            btn.classList.remove('selected');
+        // カードの選択状態を更新
+        document.querySelectorAll('.subject-card').forEach(card => {
+            card.classList.remove('selected');
         });
         document.querySelector(`[data-subject="${subject}"]`).classList.add('selected');
         
-        // 年度選択を表示
-        document.getElementById('year-selection').style.display = 'block';
+        // 開始ボタンの状態を更新
+        this.updateStartButton();
     }
 
     // 年度選択
     selectCoverYear(year) {
         this.selectedCoverYear = year;
         
-        // ボタンの選択状態を更新
-        document.querySelectorAll('.year-btn').forEach(btn => {
-            btn.classList.remove('selected');
+        // カードの選択状態を更新
+        document.querySelectorAll('.year-card').forEach(card => {
+            card.classList.remove('selected');
         });
         document.querySelector(`[data-year="${year}"]`).classList.add('selected');
         
-        // 開始ボタンを表示
-        document.getElementById('start-button').style.display = 'block';
-        document.getElementById('start-quiz').disabled = false;
+        // 開始ボタンの状態を更新
+        this.updateStartButton();
+    }
+
+    // 開始ボタンの状態を更新
+    updateStartButton() {
+        const startBtn = document.getElementById('start-quiz');
+        if (this.selectedCoverSubject && this.selectedCoverYear) {
+            startBtn.disabled = false;
+        } else {
+            startBtn.disabled = true;
+        }
     }
 
     // クイズ開始
